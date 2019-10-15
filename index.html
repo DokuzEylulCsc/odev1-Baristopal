@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Barış Topal 2018280045</title>
+    </head>
+<body>
+<h2>2019 Güz Döneminin ilk ödevi</h2>
+<h2>Barış Topal 2018280045</h2>
+<label for="id1">Metin kutusu 1</label>
+<input type='text' id='id1'/>
+<br>
+<label for="id2">Metin kutusu 2</label>
+<input type='text' id='id2' />
+<br><br>
+<button type="button" onclick="sayiTopla()">Topla</button> <!–– "onclick" ile tıklama anınnda çalışacak fonksiyonu belirtiyorum (https://www.w3schools.com/jsref/event_onclick.asp) ––> 
+<br><br>
+<label for="id3">Metin kutusu 3</label>
+<input type='text' id='id3' />
+<br>
+<label for="id4">Metin kutusu 4</label>
+<input type='text' id='id4' />
+<br><br>
+<button type="button" onclick="stringTopla()">Yapıştır</button>
+</body>
+<script>
+    var input1 = document.getElementById("id1") // id1 elementini javascript kısmında kullanabilmek için input1 değişkenine tanımladım  (https://www.w3schools.com/jsref/met_document_getelementbyid.asp)
+    var input2 = document.getElementById("id2")
+    var input3 = document.getElementById("id3")
+    var input4 = document.getElementById("id4")
+
+    function sayiKontrol (event) {                          //Burada sayı dışında girdi kabul etmemek için girilen karakterin ascii kodunu kontrol ederek sayı olup olmadığını kontrol ettim.
+        var asciiCode = event.keyCode;                      // bu fikri buradan edindim https://stackoverflow.com/questions/13952686/how-to-make-html-input-tag-only-accept-numerical-values
+
+        if (48 <= asciiCode && 57 >= asciiCode) {
+            return true;  
+        } else {
+            return false;
+        }
+    }
+
+    input1.onkeypress = sayiKontrol;
+    input2.onkeypress = sayiKontrol;
+
+    function sayiTopla() {
+        var sayi1 = parseInt(input1.value); // id1 elementindeki veriyi integer'a çevirdim  (https://www.w3schools.com/jsref/jsref_parseint.asp)
+        var sayi2 = parseInt(input2.value); 
+        var toplam = sayi1 + sayi2
+        alert('Sayıların toplamı: ' + toplam)
+    }
+
+    function stringTopla() {
+        var string1 = input3.value;
+        var string2 = input4.value;
+        var sonuc = string1 + string2;
+        alert('Yazıların toplamı: ' + sonuc);
+    }
+
+</script>
+</html>
